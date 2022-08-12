@@ -7,6 +7,7 @@ dotenv.config({
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import validationPipeFactory from './validation-pipe.factory';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -20,6 +21,7 @@ async function bootstrap() {
       },
     },
   );
+  app.useGlobalPipes(validationPipeFactory());
   await app.listen();
 }
 bootstrap();
