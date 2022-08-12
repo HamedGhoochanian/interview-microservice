@@ -18,7 +18,6 @@ export class UsersService {
       ...payload,
       birthday: new Date(payload.birthday),
     });
-    console.log(user);
     return plainToInstance(UserResponseDto, user, {
       excludeExtraneousValues: true,
     });
